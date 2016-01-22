@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang='en-GB'>
+<head>
+  <meta charset='utf-8'>
+  <title>Ractive test</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+  <script src='https://cdn.firebase.com/js/client/2.3.1/firebase.js'></script>
+  <!-- 最新編譯和最佳化的 CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <!-- 選擇性佈景主題 -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <div id='output'></div>
+  <script id='template' type='text/ractive'>
+    <table class='table table-striped foodinfo'>
+      <tr class='info'>
+        <th>#</th>
+        <th>Name</th>
+        <th>Open Hour</th>
+      </tr>
+      {{#each food:num}}
+      <tr class='active'>
+        <td>{{num+1}}</td>
+        <td>{{name}}</td>
+        <td>{{openHour}}</td>
+        <span on-click='delete' style='color: {{color}}, marginLeft: 10px, cursor: pointer'>
+            X
+        </span>
+        <span class="fa fa-pencil-square-o" on-click='edit'
+          style=' color: black, marginLeft: 10px, cursor: pointer, font-family:{{font}} '>
+        </span>
+      </tr>
+      {{/each}}
+
+    </table>
+    <input value='{{input.name}}' placeholder='name'>
+    <input value='{{input.openHour}}' placeholder='Open Hour'>
+    <button type="submit" name="Submit" on-click='sumbit'>Submit</button>
+    <button type="submit" name="Cancel" on-click='cancel'>cancel</button>
+  </script>
+
+  <script src='http://cdn.ractivejs.org/latest/ractive.min.js'></script>
+  <script type="text/babel" src="./app.js"></script>
+
+</body>
+</html>
